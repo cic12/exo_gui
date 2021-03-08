@@ -1,4 +1,4 @@
-# exo_gui
+# Exoskeleton Control GUI
 
 GUI and controller code template for exoskeleton control.
 
