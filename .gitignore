@@ -1,0 +1,3 @@
+# res/*
+# !res/logs
+# res/logs/*
