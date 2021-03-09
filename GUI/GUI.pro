@@ -8,11 +8,11 @@ DESTDIR = ../x64/Debug
 QT += core gui widgets serialport printsupport
 CONFIG += debug
 DEFINES += _UNICODE _ENABLE_EXTENDED_ALIGNED_STORAGE WIN64 QT_SERIALPORT_LIB QT_WIDGETS_LIB QT_PRINTSUPPORT_LIB _CRT_SECURE_NO_WARNINGS
-INCLUDEPATH += ./../Debug \
-    ./../hebicpp/hebi-cpp/hebi/include \
+INCLUDEPATH += ./../hebicpp/hebi-cpp/hebi/include \
     ./../hebicpp/hebi-cpp/src \
     ./../hebicpp/hebi-cpp/Eigen \
     ./../x-IMU/include \
+    ./../TMSi/include \
     ./GeneratedFiles \
     ./GeneratedFiles/$(ConfigurationName)
 DEPENDPATH += .

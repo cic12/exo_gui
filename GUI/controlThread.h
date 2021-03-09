@@ -2,12 +2,14 @@
 
 #include "ui_GUI.h"
 #include "motorThread.h"
+#include "tmsicontroller.h"
 
 using namespace std;
 
 struct testParams {
-	bool Device = 0;
-	double T = 600.0;
+    bool exo = 0;
+    bool emg = 0;
+    double T = 60.0;
 };
 
 struct plotVars {
@@ -24,8 +26,8 @@ public:
 
 	void run();
 	bool Stop = false;
-	bool mpc_initialised = false;
-	int iMPC = 0;
+    bool control_initialised = false;
+    int i_control = 0;
 
 	double quat[4] = {};
 	double quat_3[4] = {};
@@ -56,8 +58,12 @@ private:
 	double time_counter = 0.0;
 	clock_t this_time, last_time, start_time, end_time;
 
+    QVector<double> e1vec = { 0 }, e2vec = { 0 }, e3vec = { 0 }, e4vec = { 0 };
+    TMSiController *TMSi;
+    double evec[4] = {};
+
 	FILE *file_x, *file_xdes,
-		*file_u, *file_udes, *file_t,
+        *file_u, *file_udes, *file_t, *file_emg,
 		*file_quat, * file_quat_3, * file_quat_4,
 		*file_nano, *file_hebi_quat;
 
@@ -68,5 +74,4 @@ signals:
 	void GUIComms(QString);
 };
 
-void openFile(FILE **file, const char *name);
 void printNumVector2File(FILE *file, const double *const val, const int size);

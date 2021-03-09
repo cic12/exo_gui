@@ -3,7 +3,7 @@
 ControlThread::ControlThread(QObject *parent)
 	:QThread(parent)
 {
-	if (test.Device) {
+    if (test.exo) {
 		motorThread = new MotorThread(this);
 	}
 }
@@ -12,11 +12,18 @@ void ControlThread::run()
 {
 	control_init();
 
-	if (test.Device) {
+    if (test.exo && test.emg == 1) { // TMSi
+        TMSi = new TMSiController();
+        TMSi->daq->daq_aiFile.open("../res/aivec.txt");
+        TMSi->startStream();
+        TMSi->setRefCalculation(1);
+    }
+
+    if (test.exo) {
 		motorThread->start(QThread::LowPriority);
 		while (!motorThread->motor_initialised);
 	}
-	mpc_initialised = true;
+    control_initialised = true;
 
 	Sleep(100);
 
@@ -24,7 +31,7 @@ void ControlThread::run()
 	start_time = last_time;
 	while (!Stop && t < test.T - 0.002) {
 		control_loop();
-		if (iMPC % 10 == 0)
+        if (i_control % 10 == 0)
 		{
 			mutex.lock();
 			vars.time = t;
@@ -45,13 +52,20 @@ void ControlThread::control_init() {
 void ControlThread::control_stop() {
 	end_time = clock();
 	double duration = (double)(end_time - start_time);
+
+    if (test.exo && test.emg == 1) { // TMSi
+            TMSi->endStream();
+            TMSi->reset();
+            TMSi->daq->daq_aiFile.close();
+    }
+
 	Stop = 1;
-	if (test.Device) {
-		motorThread->mpc_complete = 1;
+    if (test.exo) {
+        motorThread->control_complete = 1;
 	}
 	close_files();
 	GUIComms("Real Duration, ms :" + QString::number(duration, 'f', 0) + "\n");
-	if(test.Device)
+    if(test.exo)
 		GUIComms("Command Cycles  :" + QString::number(motorThread->motor_comms_count, 'f', 0) + "\n");
 	GUIComms("\n");
 	GUIComms("DONE");
@@ -67,21 +81,30 @@ void ControlThread::control_loop() {
 	last_time = this_time;
 	if (time_counter > (double)(0.002 * CLOCKS_PER_SEC)) // 1000 cps
 	{
-		referencePosition = 0;// (cos((0.25 * 2 * M_PI * (t - t_halt)) - M_PI)) / 2 + 0.7; // freq
+        referencePosition = 0;
 		referenceVelocity = (referencePosition - xdes_previous) / 0.002;
 		xdes_previous = referencePosition;
 
-		if (test.Device) {
+        if (test.emg) { // TMSi
+                mutex.lock();
+                evec[0] = TMSi->daq->mgvec[0];
+                evec[1] = TMSi->daq->mgvec[1];
+                evec[2] = TMSi->daq->mgvec[2];
+                evec[3] = TMSi->daq->mgvec[3];
+                mutex.unlock();
+        }
+
+        if (test.exo) {
 			demandedTorque = 0;
 			motorThread->demandedTorque = demandedTorque;
 			motorTorque = motorThread->currentTorque;
-			currentPosition = motorThread->currentPosition - 0.125 * M_PI - 0.5 * M_PI;
+            currentPosition = motorThread->currentPosition;
 
-			if (iMPC == 0) {
+            if (i_control == 0) {
 				motorThread->previousPosition = currentPosition; // takes initial position into account
 			}
 			currentVelocity = motorThread->currentVelocity;
-			currentVelocity = alpha * currentVelocity + (1 - alpha) * previousVelocity;		// implement SMA for velocity until full state estimator is developed
+            currentVelocity = alpha * currentVelocity + (1 - alpha) * previousVelocity;
 			previousVelocity = currentVelocity;
 
 			hebi_quat[0] = motorThread->hebi_quat[0];
@@ -97,23 +120,25 @@ void ControlThread::control_loop() {
 		}
 		print2Files();
 		t = t + 0.002;
-		iMPC++;
+        i_control++;
 		loopSlept = false;
 		time_counter -= (double)(0.002 * CLOCKS_PER_SEC);
 	}
 }
 
 void ControlThread::open_files() {
-	openFile(&file_x, "../res/xvec.txt");
-	openFile(&file_xdes, "../res/xdesvec.txt");
-	openFile(&file_u, "../res/uvec.txt");
-	openFile(&file_udes, "../res/udes.txt");
-	openFile(&file_t, "../res/tvec.txt");
-	openFile(&file_quat, "../res/quat.txt");
-	openFile(&file_quat_3, "../res/quat_3.txt");
-	openFile(&file_quat_4, "../res/quat_4.txt");
-	openFile(&file_nano, "../res/nano.txt");
-	openFile(&file_hebi_quat, "../res/hebi_quat.txt");
+    errno_t err;
+    err = fopen_s(&file_x, "../res/xvec.txt", "w");
+    err = fopen_s(&file_xdes, "../res/xdesvec.txt", "w");
+    err = fopen_s(&file_u, "../res/uvec.txt", "w");
+    err = fopen_s(&file_udes, "../res/udes.txt", "w");
+    err = fopen_s(&file_t, "../res/tvec.txt", "w");
+    err = fopen_s(&file_emg, "../res/emg.txt", "w");
+    err = fopen_s(&file_quat, "../res/quat.txt", "w");
+    err = fopen_s(&file_quat_3, "../res/quat_3.txt", "w");
+    err = fopen_s(&file_quat_4, "../res/quat_4.txt", "w");
+    err = fopen_s(&file_nano, "../res/nano.txt", "w");
+    err = fopen_s(&file_hebi_quat, "../res/hebi_quat.txt", "w");
 }
 
 void ControlThread::print2Files() {
@@ -122,7 +147,8 @@ void ControlThread::print2Files() {
 	printNumVector2File(file_u, &motorTorque, 1);
 	printNumVector2File(file_udes, &demandedTorque, 1);
 	printNumVector2File(file_t, &t, 1);
-	printNumVector2File(file_quat, quat, 4);
+    printNumVector2File(file_emg, evec, 4);
+    printNumVector2File(file_quat, quat, 4);
 	printNumVector2File(file_quat_3, quat_3, 4);
 	printNumVector2File(file_quat_4, quat_4, 4);
 	printNumVector2File(file_nano, nano, 4);
@@ -136,15 +162,12 @@ void ControlThread::close_files()
 	fclose(file_u);
 	fclose(file_udes);
 	fclose(file_t);
+    fclose(file_emg);
 	fclose(file_quat);
 	fclose(file_quat_3);
 	fclose(file_quat_4);
 	fclose(file_nano),
 	fclose(file_hebi_quat);
-}
-
-void openFile(FILE **file, const char *name) {
-	*file = fopen(name, "w");
 }
 
 void printNumVector2File(FILE *file, const double * val, const int size) {

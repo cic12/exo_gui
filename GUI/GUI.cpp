@@ -62,7 +62,7 @@ GUI::GUI(QWidget *parent)
 void GUI::onTimeout()
 {
 	controlThread->mutex.lock();
-	if (controlThread->mpc_initialised) {
+    if (controlThread->control_initialised) {
 		plot_vars = controlThread->vars;
 		if (controlThread->Stop) {
 			timer->stop();

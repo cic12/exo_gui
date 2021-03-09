@@ -8,10 +8,14 @@ message("You are running qmake on a generated .pro file. This may not work!")
 
 
 HEADERS += ./GUI.h \
+    $$PWD/daq.h \
+    $$PWD/tmsicontroller.h \
     ./qcustomplot.h \
     ./motorThread.h \
     ./controlThread.h
 SOURCES += ./GUI.cpp \
+    $$PWD/daq.cpp \
+    $$PWD/tmsicontroller.cpp \
     ./main.cpp \
     ./motorThread.cpp \
     ./controlThread.cpp \

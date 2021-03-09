@@ -25,7 +25,7 @@ void MotorThread::run() {
 
 	motor_initialised = true;
 	
-	while (!mpc_complete) {
+    while (!control_complete) {
 		if (!group->getNextFeedback(group_feedback)) {
 			continue;
 		}

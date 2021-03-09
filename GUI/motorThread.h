@@ -21,7 +21,7 @@ public:
 	void run();
 
 	bool motor_initialised = false;
-	bool mpc_complete = false;
+    bool control_complete = false;
 	double demandedTorque = 0;
 	double currentTorque = 0;
 	double motor_comms_count = 0;
