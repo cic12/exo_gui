@@ -10,6 +10,10 @@ With Qt installed, the code in this repo should run straight away. The Qt projec
 
 ## Usage
 
+Before running the code, make sure you are connected to the HEBI X8-9 actuator using the Scope software.
+
+To connect to the exoskeleton router use the network 'TP-Link_A196_5G'. The 5 GHz frequency drop packets much less often than the 2.4 GHz frequency because of the faster speed.
+
 Recorded variables are saved as .txt files in the ./res/ directory. The HEBI actuator records a log of all available feedback variables and this is saved in the ./res/log directory.
 
 To-do: .m file for viewing results
