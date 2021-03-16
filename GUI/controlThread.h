@@ -7,9 +7,9 @@
 using namespace std;
 
 struct testParams {
-    bool exo = 0;
-    bool emg = 0;
-    double T = 60.0;
+    bool exo = 1; // Set 1 or 0 to turn on/off exoskeleton control
+    bool emg = 1; // Set 1 or 0 to turn on/off emg recording
+    double T = 40.0; // Set to limit trial time (s)
 };
 
 struct plotVars {
@@ -28,11 +28,6 @@ public:
 	bool Stop = false;
     bool control_initialised = false;
     int i_control = 0;
-
-	double quat[4] = {};
-	double quat_3[4] = {};
-	double quat_4[4] = {};
-	double nano[4] = {};
 	float voltage = 0;
 
 	plotVars vars;
@@ -58,14 +53,15 @@ private:
 	double time_counter = 0.0;
 	clock_t this_time, last_time, start_time, end_time;
 
-    QVector<double> e1vec = { 0 }, e2vec = { 0 }, e3vec = { 0 }, e4vec = { 0 };
     TMSiController *TMSi;
+    QVector<double> e1vec = { 0 }, e2vec = { 0 }, e3vec = { 0 }, e4vec = { 0 };
+
     double evec[4] = {};
 
     FILE *file_x, *file_xdes,
-        *file_u, *file_udes, *file_t, *file_emg,
-		*file_quat, * file_quat_3, * file_quat_4,
-		*file_nano, *file_hebi_quat;
+        *file_u, *file_udes,
+        *file_t, *file_emg,
+        *file_hebi_quat;
 
 	void open_files();
 	void print2Files();

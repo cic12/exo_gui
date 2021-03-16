@@ -1,5 +1,5 @@
-# res/*
-# !res/logs
-# res/logs/*
+# results/*
+# !results/logs
+# results/logs/*
 GUI/debug
-
+*.asv

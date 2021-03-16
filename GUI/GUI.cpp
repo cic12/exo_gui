@@ -156,10 +156,10 @@ void GUI::on_quaternion_received(const ximu::QuaternionData& q)
 	std::stringstream ss;
 	ss << "Quaternion (" << q.w() << "," << q.x() << "," << q.y() << "," << q.z() << ")";
 	ui.textArea->appendPlainText(QString::fromStdString(ss.str()));
-	controlThread->quat[0] = q.w();
-	controlThread->quat[1] = q.x();
-	controlThread->quat[2] = q.y();
-	controlThread->quat[3] = q.z();
+//	controlThread->quat[0] = q.w();
+//	controlThread->quat[1] = q.x();
+//	controlThread->quat[2] = q.y();
+//	controlThread->quat[3] = q.z();
 }
 
 void GUI::on_text_changed() {
@@ -215,10 +215,10 @@ void GUI::on_quaternion_received_3(const ximu::QuaternionData& q)
 	std::stringstream ss;
 	ss << "Quaternion (" << q.w() << "," << q.x() << "," << q.y() << "," << q.z() << ")";
 	ui.textArea_3->appendPlainText(QString::fromStdString(ss.str()));
-	controlThread->quat_3[0] = q.w();
-	controlThread->quat_3[1] = q.x();
-	controlThread->quat_3[2] = q.y();
-	controlThread->quat_3[3] = q.z();
+//	controlThread->quat_3[0] = q.w();
+//	controlThread->quat_3[1] = q.x();
+//	controlThread->quat_3[2] = q.y();
+//	controlThread->quat_3[3] = q.z();
 }
 
 void GUI::on_text_changed_3()
@@ -275,10 +275,10 @@ void GUI::on_quaternion_received_4(const ximu::QuaternionData& q)
 	std::stringstream ss;
 	ss << "Quaternion (" << q.w() << "," << q.x() << "," << q.y() << "," << q.z() << ")";
 	ui.textArea_4->appendPlainText(QString::fromStdString(ss.str()));
-	controlThread->quat_4[0] = q.w();
-	controlThread->quat_4[1] = q.x();
-	controlThread->quat_4[2] = q.y();
-	controlThread->quat_4[3] = q.z();
+//	controlThread->quat_4[0] = q.w();
+//	controlThread->quat_4[1] = q.x();
+//	controlThread->quat_4[2] = q.y();
+//	controlThread->quat_4[3] = q.z();
 }
 
 void GUI::on_text_changed_4()
@@ -322,10 +322,10 @@ void GUI::process_line(const QByteArray & line)
 {
 	ui.textArea_2->appendPlainText(QString::fromUtf8(line));
 	auto data = line.split(' ');
-	controlThread->nano[0] = data[0].toDouble();
-	controlThread->nano[1] = data[1].toDouble();
-	controlThread->nano[2] = data[2].toDouble();
-	controlThread->nano[3] = data[3].toDouble();
+//	controlThread->nano[0] = data[0].toDouble();
+//	controlThread->nano[1] = data[1].toDouble();
+//	controlThread->nano[2] = data[2].toDouble();
+//	controlThread->nano[3] = data[3].toDouble();
 }
 
 void GUI::on_text_changed_2()

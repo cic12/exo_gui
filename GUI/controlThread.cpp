@@ -12,9 +12,9 @@ void ControlThread::run()
 {
 	control_init();
 
-    if (test.exo && test.emg == 1) { // TMSi
+    if (test.emg == 1) { // TMSi
         TMSi = new TMSiController();
-        TMSi->daq->daq_aiFile.open("../res/aivec.txt");
+        TMSi->daq->daq_aiFile.open("../../results/aivec.txt");
         TMSi->startStream();
         TMSi->setRefCalculation(1);
     }
@@ -25,7 +25,7 @@ void ControlThread::run()
 	}
     control_initialised = true;
 
-	Sleep(100);
+    Sleep(100); // delay in ms
 
 	last_time = clock();
 	start_time = last_time;
@@ -53,7 +53,7 @@ void ControlThread::control_stop() {
 	end_time = clock();
 	double duration = (double)(end_time - start_time);
 
-    if (test.exo && test.emg == 1) { // TMSi
+    if (test.emg == 1) { // TMSi
             TMSi->endStream();
             TMSi->reset();
             TMSi->daq->daq_aiFile.close();
@@ -130,17 +130,13 @@ void ControlThread::control_loop() {
 
 void ControlThread::open_files() {
     errno_t err;
-    err = fopen_s(&file_x, "../../res/xvec.txt", "w");
-    err = fopen_s(&file_xdes, "../../res/xdesvec.txt", "w");
-    err = fopen_s(&file_u, "../../res/uvec.txt", "w");
-    err = fopen_s(&file_udes, "../../res/udes.txt", "w");
-    err = fopen_s(&file_t, "../../res/tvec.txt", "w");
-    err = fopen_s(&file_emg, "../../res/emg.txt", "w");
-    err = fopen_s(&file_quat, "../../res/quat.txt", "w");
-    err = fopen_s(&file_quat_3, "../../res/quat_3.txt", "w");
-    err = fopen_s(&file_quat_4, "../../res/quat_4.txt", "w");
-    err = fopen_s(&file_nano, "../../res/nano.txt", "w");
-    err = fopen_s(&file_hebi_quat, "../../res/hebi_quat.txt", "w");
+    err = fopen_s(&file_x, "../../results/xvec.txt", "w");
+    err = fopen_s(&file_xdes, "../../results/xdesvec.txt", "w");
+    err = fopen_s(&file_u, "../../results/uvec.txt", "w");
+    err = fopen_s(&file_udes, "../../results/udes.txt", "w");
+    err = fopen_s(&file_t, "../../results/tvec.txt", "w");
+    err = fopen_s(&file_emg, "../../results/emg.txt", "w");
+    err = fopen_s(&file_hebi_quat, "../../results/hebi_quat.txt", "w");
 }
 
 void ControlThread::print2Files() {
@@ -150,10 +146,6 @@ void ControlThread::print2Files() {
     printNumVector2File(file_udes, &demandedTorque, 1);
     printNumVector2File(file_t, &t, 1);
     printNumVector2File(file_emg, evec, 4);
-    printNumVector2File(file_quat, quat, 4);
-    printNumVector2File(file_quat_3, quat_3, 4);
-    printNumVector2File(file_quat_4, quat_4, 4);
-    printNumVector2File(file_nano, nano, 4);
     printNumVector2File(file_hebi_quat, hebi_quat, 4);
 }
 
@@ -165,10 +157,6 @@ void ControlThread::close_files()
     fclose(file_udes);
     fclose(file_t);
     fclose(file_emg);
-    fclose(file_quat);
-    fclose(file_quat_3);
-    fclose(file_quat_4);
-    fclose(file_nano),
     fclose(file_hebi_quat);
 }
 

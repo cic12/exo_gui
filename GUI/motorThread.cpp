@@ -21,7 +21,7 @@ void MotorThread::run() {
 	GroupFeedback group_feedback(group->size());
 	Feedback feedback();
 	group->setFeedbackFrequencyHz(500);
-	group->startLog("../res/logs");
+    group->startLog("../../results/logs");
 
 	motor_initialised = true;
 	
