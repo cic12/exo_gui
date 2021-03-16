@@ -11,7 +11,6 @@ DEFINES += _UNICODE _ENABLE_EXTENDED_ALIGNED_STORAGE WIN64 QT_SERIALPORT_LIB QT_
 INCLUDEPATH += ./../hebicpp/hebi-cpp/hebi/include \
     ./../hebicpp/hebi-cpp/src \
     ./../hebicpp/hebi-cpp/Eigen \
-    ./../x-IMU/include \
     ./../TMSi/include \
     ./GeneratedFiles \
     ./GeneratedFiles/$(ConfigurationName)
