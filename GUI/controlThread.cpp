@@ -45,7 +45,7 @@ void ControlThread::run()
 }
 
 void ControlThread::control_init() {
-	open_files();
+    open_files();
 	GUIComms("Init Complete\n");
 }
 
@@ -63,7 +63,7 @@ void ControlThread::control_stop() {
     if (test.exo) {
         motorThread->control_complete = 1;
 	}
-	close_files();
+    close_files();
 	GUIComms("Real Duration, ms :" + QString::number(duration, 'f', 0) + "\n");
     if(test.exo)
 		GUIComms("Command Cycles  :" + QString::number(motorThread->motor_comms_count, 'f', 0) + "\n");
@@ -95,7 +95,9 @@ void ControlThread::control_loop() {
         }
 
         if (test.exo) {
+
 			demandedTorque = 0;
+
 			motorThread->demandedTorque = demandedTorque;
 			motorTorque = motorThread->currentTorque;
             currentPosition = motorThread->currentPosition;
@@ -114,11 +116,11 @@ void ControlThread::control_loop() {
 
 			voltage = motorThread->voltage;
 			if (voltage < 30) {
-				GUIComms("Power supply voltage too low.");
+                GUIComms("Power supply voltage too low\n\n");
 				Stop = 1;
 			}
 		}
-		print2Files();
+        print2Files();
 		t = t + 0.002;
         i_control++;
 		loopSlept = false;
@@ -128,46 +130,46 @@ void ControlThread::control_loop() {
 
 void ControlThread::open_files() {
     errno_t err;
-    err = fopen_s(&file_x, "../res/xvec.txt", "w");
-    err = fopen_s(&file_xdes, "../res/xdesvec.txt", "w");
-    err = fopen_s(&file_u, "../res/uvec.txt", "w");
-    err = fopen_s(&file_udes, "../res/udes.txt", "w");
-    err = fopen_s(&file_t, "../res/tvec.txt", "w");
-    err = fopen_s(&file_emg, "../res/emg.txt", "w");
-    err = fopen_s(&file_quat, "../res/quat.txt", "w");
-    err = fopen_s(&file_quat_3, "../res/quat_3.txt", "w");
-    err = fopen_s(&file_quat_4, "../res/quat_4.txt", "w");
-    err = fopen_s(&file_nano, "../res/nano.txt", "w");
-    err = fopen_s(&file_hebi_quat, "../res/hebi_quat.txt", "w");
+    err = fopen_s(&file_x, "../../res/xvec.txt", "w");
+    err = fopen_s(&file_xdes, "../../res/xdesvec.txt", "w");
+    err = fopen_s(&file_u, "../../res/uvec.txt", "w");
+    err = fopen_s(&file_udes, "../../res/udes.txt", "w");
+    err = fopen_s(&file_t, "../../res/tvec.txt", "w");
+    err = fopen_s(&file_emg, "../../res/emg.txt", "w");
+    err = fopen_s(&file_quat, "../../res/quat.txt", "w");
+    err = fopen_s(&file_quat_3, "../../res/quat_3.txt", "w");
+    err = fopen_s(&file_quat_4, "../../res/quat_4.txt", "w");
+    err = fopen_s(&file_nano, "../../res/nano.txt", "w");
+    err = fopen_s(&file_hebi_quat, "../../res/hebi_quat.txt", "w");
 }
 
 void ControlThread::print2Files() {
-	printNumVector2File(file_x, &currentPosition, 1);
-	printNumVector2File(file_xdes, &referencePosition, 1);
-	printNumVector2File(file_u, &motorTorque, 1);
-	printNumVector2File(file_udes, &demandedTorque, 1);
-	printNumVector2File(file_t, &t, 1);
+    printNumVector2File(file_x, &currentPosition, 1);
+    printNumVector2File(file_xdes, &referencePosition, 1);
+    printNumVector2File(file_u, &motorTorque, 1);
+    printNumVector2File(file_udes, &demandedTorque, 1);
+    printNumVector2File(file_t, &t, 1);
     printNumVector2File(file_emg, evec, 4);
     printNumVector2File(file_quat, quat, 4);
-	printNumVector2File(file_quat_3, quat_3, 4);
-	printNumVector2File(file_quat_4, quat_4, 4);
-	printNumVector2File(file_nano, nano, 4);
-	printNumVector2File(file_hebi_quat, hebi_quat, 4);
+    printNumVector2File(file_quat_3, quat_3, 4);
+    printNumVector2File(file_quat_4, quat_4, 4);
+    printNumVector2File(file_nano, nano, 4);
+    printNumVector2File(file_hebi_quat, hebi_quat, 4);
 }
 
 void ControlThread::close_files()
 {
-	fclose(file_x);
-	fclose(file_xdes);
-	fclose(file_u);
-	fclose(file_udes);
-	fclose(file_t);
+    fclose(file_x);
+    fclose(file_xdes);
+    fclose(file_u);
+    fclose(file_udes);
+    fclose(file_t);
     fclose(file_emg);
-	fclose(file_quat);
-	fclose(file_quat_3);
-	fclose(file_quat_4);
-	fclose(file_nano),
-	fclose(file_hebi_quat);
+    fclose(file_quat);
+    fclose(file_quat_3);
+    fclose(file_quat_4);
+    fclose(file_nano),
+    fclose(file_hebi_quat);
 }
 
 void printNumVector2File(FILE *file, const double * val, const int size) {

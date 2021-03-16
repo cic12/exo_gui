@@ -62,7 +62,7 @@ private:
     TMSiController *TMSi;
     double evec[4] = {};
 
-	FILE *file_x, *file_xdes,
+    FILE *file_x, *file_xdes,
         *file_u, *file_udes, *file_t, *file_emg,
 		*file_quat, * file_quat_3, * file_quat_4,
 		*file_nano, *file_hebi_quat;
@@ -74,4 +74,5 @@ signals:
 	void GUIComms(QString);
 };
 
+void openFile(FILE **file, const char *name);
 void printNumVector2File(FILE *file, const double *const val, const int size);
