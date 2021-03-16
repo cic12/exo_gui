@@ -17,5 +17,5 @@ if ~isequal(activity,'')
     save(strcat('data/','data_file_',timestamp,'_',activity,'.mat'))
 end
 
-% Display data
+% Plot data
 plot_data
