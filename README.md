@@ -1,6 +1,6 @@
 # Exoskeleton GUI
 
-GUI and controller code template for exoskeleton control.
+GUI and controller code template for exoskeleton control and EMG recording.
 
 ## Installation
 
