@@ -35,8 +35,18 @@ void ControlThread::run()
 		{
 			mutex.lock();
 			vars.time = t;
-			vars.u = motorTorque;
+            vars.x = currentPosition;
+            vars.x_des = referencePosition;
+            vars.u = motorTorque;
 			vars.u_cmd = demandedTorque;
+            vars.quat[0] = hebi_quat[0];
+            vars.quat[1] = hebi_quat[1];
+            vars.quat[2] = hebi_quat[2];
+            vars.quat[3] = hebi_quat[3];
+            vars.emg[0] = evec[0];
+            vars.emg[1] = evec[1];
+            vars.emg[2] = evec[2];
+            vars.emg[3] = evec[3];
 			mutex.unlock();
 		}
 	}
@@ -81,22 +91,23 @@ void ControlThread::control_loop() {
 	last_time = this_time;
 	if (time_counter > (double)(0.002 * CLOCKS_PER_SEC)) // 1000 cps
 	{
-        referencePosition = 0;
+        if (test.emg) { // TMSi
+            mutex.lock();
+            evec[0] = TMSi->daq->mgvec[0];
+            evec[1] = TMSi->daq->mgvec[1];
+            evec[2] = TMSi->daq->mgvec[2];
+            evec[3] = TMSi->daq->mgvec[3];
+            mutex.unlock();
+        }
+
+        referencePosition = 0; // Constant reference (can be changed to be a function of t)
+
 		referenceVelocity = (referencePosition - xdes_previous) / 0.002;
 		xdes_previous = referencePosition;
 
-        if (test.emg) { // TMSi
-                mutex.lock();
-                evec[0] = TMSi->daq->mgvec[0];
-                evec[1] = TMSi->daq->mgvec[1];
-                evec[2] = TMSi->daq->mgvec[2];
-                evec[3] = TMSi->daq->mgvec[3];
-                mutex.unlock();
-        }
-
         if (test.exo) {
 
-			demandedTorque = 0;
+            demandedTorque = 0; // Constant torque demand (can be controlled)
 
 			motorThread->demandedTorque = demandedTorque;
 			motorTorque = motorThread->currentTorque;
@@ -130,34 +141,34 @@ void ControlThread::control_loop() {
 
 void ControlThread::open_files() {
     errno_t err;
+    err = fopen_s(&file_t, "../../results/tvec.txt", "w");
     err = fopen_s(&file_x, "../../results/xvec.txt", "w");
     err = fopen_s(&file_xdes, "../../results/xdesvec.txt", "w");
     err = fopen_s(&file_u, "../../results/uvec.txt", "w");
     err = fopen_s(&file_udes, "../../results/udes.txt", "w");
-    err = fopen_s(&file_t, "../../results/tvec.txt", "w");
-    err = fopen_s(&file_emg, "../../results/emg.txt", "w");
     err = fopen_s(&file_hebi_quat, "../../results/hebi_quat.txt", "w");
+    err = fopen_s(&file_emg, "../../results/emg.txt", "w");
 }
 
 void ControlThread::print2Files() {
+    printNumVector2File(file_t, &t, 1);
     printNumVector2File(file_x, &currentPosition, 1);
     printNumVector2File(file_xdes, &referencePosition, 1);
     printNumVector2File(file_u, &motorTorque, 1);
     printNumVector2File(file_udes, &demandedTorque, 1);
-    printNumVector2File(file_t, &t, 1);
-    printNumVector2File(file_emg, evec, 4);
     printNumVector2File(file_hebi_quat, hebi_quat, 4);
+    printNumVector2File(file_emg, evec, 4);
 }
 
 void ControlThread::close_files()
 {
+    fclose(file_t);
     fclose(file_x);
     fclose(file_xdes);
     fclose(file_u);
     fclose(file_udes);
-    fclose(file_t);
-    fclose(file_emg);
     fclose(file_hebi_quat);
+    fclose(file_emg);
 }
 
 void printNumVector2File(FILE *file, const double * val, const int size) {

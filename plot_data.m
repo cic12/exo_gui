@@ -8,7 +8,7 @@ nexttile
 hold on
 plot(tvec,xvec);
 plot(tvec,xdes);
-legend theta theta_{cmd}
+legend theta theta_{des}
 title 'exo position'
 
 nexttile

@@ -14,7 +14,10 @@ struct testParams {
 
 struct plotVars {
 	double time = 0,
-		u = 0, u_cmd = 0;
+        x = 0, x_des = 0,
+        u = 0, u_cmd = 0,
+        quat[4] = {},
+        emg[4] = {};
 };
 	
 class ControlThread : public QThread
@@ -54,7 +57,6 @@ private:
 	clock_t this_time, last_time, start_time, end_time;
 
     TMSiController *TMSi;
-    QVector<double> e1vec = { 0 }, e2vec = { 0 }, e3vec = { 0 }, e4vec = { 0 };
 
     double evec[4] = {};
 

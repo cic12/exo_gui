@@ -28,7 +28,6 @@ public:
 	double currentPosition = 0.2 + 0.625 * M_PI;
 	double previousPosition = 0;
 	double currentVelocity = 0;
-	double accelerometer[3] = {};
 	double hebi_quat[4] = {};
 	float voltage = 0;
 

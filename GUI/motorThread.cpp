@@ -42,9 +42,6 @@ void MotorThread::run() {
 		currentPosition = -pos[0];
 		currentVelocity = -vel[0];
 		currentTorque = -effort[0];
-		accelerometer[0] = accel(0, 0);
-		accelerometer[1] = accel(0, 1);
-		accelerometer[2] = accel(0, 2);
 		hebi_quat[0] = quat.getW();
 		hebi_quat[1] = quat.getX();
 		hebi_quat[2] = quat.getY();
