@@ -12,9 +12,9 @@ A PC driver is required for the TMSi EMG amplifier. This is available with insta
 
 ## Usage
 
-The software can be used for the exoskeleton and EMG individually or together, set using checkboxes in the GUI. The default configuration is changed by setting the 'exo' and 'emg' variables to 1 or 0 for on/off in the testParams struct in 'controlThread.h'. The maximum test time 'T' can also be changed here.
+The software can be used for the exoskeleton and EMG individually or together, set using checkboxes in the GUI. The default configuration is changed by setting the 'exo' and 'emg' variables to 1 or 0 for on/off in the testParams struct in 'controlThread.h'. The maximum test time (s) 'T' can also be changed. To introduce a delay before recording begins, 'delay_time' (ms) can be changed.
 
-To introduce a delay before recording begins, The Sleep() duration (in ms) can be changed in the run() function of the ControlThread class in controlThread.cpp. The control_loop() function in this class is where the control loop executes and the trajectory and controller can be programmed.
+The control_loop() function in this class is where the control loop executes and the trajectory and controller can be programmed.
 
 Recorded variables are saved as .txt files in the ./results/ directory. The HEBI actuator records a separate log of all available feedback variables and this is saved in the ./results/log directory.
 

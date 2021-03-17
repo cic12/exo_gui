@@ -10,6 +10,7 @@ struct testParams {
     bool exo = 1; // Set 1 or 0 to turn on/off exoskeleton control
     bool emg = 1; // Set 1 or 0 to turn on/off emg recording
     double T = 40.0; // Set to limit trial time (s)
+	int delay_time = 100; // Delay time before each test in ms 
 };
 
 struct plotVars {

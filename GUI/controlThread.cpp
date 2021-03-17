@@ -25,7 +25,7 @@ void ControlThread::run()
 	}
     control_initialised = true;
 
-    Sleep(100); // delay in ms
+    Sleep(test.delay_time); // Delay time before each test
 
 	last_time = clock();
 	start_time = last_time;
