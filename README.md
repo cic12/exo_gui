@@ -4,7 +4,7 @@ GUI and code template for exoskeleton control and EMG recording.
 
 ## Installation
 
-A windows installation of Qt is required. The software has been developed using Desktop Qt 5.15.0 MSVC2019 64bit, so this installation is recommended, however, newer versions of Qt and the MSVC 64bit compiler should be compatible. It can be downloaded [here](https://www.qt.io/download-qt-installer "Qt") and is free for open source development. With Qt installed, the code in this repo should build and run straight away. The Qt project is loaded by opening the GUI.pro file in the ./GUI directory.
+A windows installation of Qt is required. The software has been developed in QtCreator 4.12.4 using Desktop Qt 5.15.0 MSVC2019 64bit, so this installation is recommended, however, newer versions of Qt and the MSVC 64bit compiler should be compatible. It can be downloaded [here](https://www.qt.io/download-qt-installer "Qt") and is free for open source development. With Qt installed, the code in this repo should build and run straight away. The Qt project is loaded by opening the GUI.pro file in the ./GUI directory.
 
 Before running the code, make sure the HEBI X8-9 actuator is connected using the Scope software. This is avaiable to download with documentation [here](https://docs.hebi.us/tools.html#scope-gui). To connect the exoskeleton router use the network 'TP-Link_A196_5G'. The 5 GHz frequency drops fewer packets than the 2.4 GHz frequency. The gain settings for torque (effort) or position control of the actuator should be tuned in the Scope software and checked before each test. Information about this low-level control is available in the actuator documentation [here](https://docs.hebi.us/hardware.html#x-series-actuators).
 
