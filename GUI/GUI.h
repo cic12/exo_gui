@@ -3,6 +3,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtSerialPort/QSerialPortInfo>
+#include "ximuapi/io/serial_port.h"
 #include "ui_GUI.h"
 #include "controlThread.h"
 #include "qcustomplot.h"
