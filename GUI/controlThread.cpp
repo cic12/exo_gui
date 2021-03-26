@@ -54,7 +54,54 @@ void ControlThread::run()
 	terminate();
 }
 
+// MPC
+void ControlThread::mpcInit(){
+    mpc.pSys[0] = model.A;
+    mpc.pSys[1] = model.B;
+    mpc.pSys[2] = model.J;
+    mpc.pSys[3] = model.tau_g;
+    grampc_init(&grampc_, mpc.pSys);
+
+    // Set parameters
+    grampc_setparam_real_vector(grampc_, "x0", mpc.x0);
+    grampc_setparam_real_vector(grampc_, "xdes", mpc.xdes);
+    grampc_setparam_real_vector(grampc_, "u0", mpc.u0);
+    grampc_setparam_real_vector(grampc_, "udes", mpc.udes);
+    grampc_setparam_real_vector(grampc_, "umax", mpc.umax);
+    grampc_setparam_real_vector(grampc_, "umin", mpc.umin);
+
+    grampc_setparam_real(grampc_, "Thor", mpc.Thor);
+    grampc_setparam_real(grampc_, "dt", mpc.dt);
+
+    // Set Options
+    grampc_setopt_int(grampc_, "Nhor", mpc.Nhor);
+    grampc_setopt_int(grampc_, "MaxGradIter", mpc.MaxGradIter);
+    grampc_setopt_int(grampc_, "MaxMultIter", mpc.MaxMultIter);
+
+    grampc_setopt_string(grampc_, "IntegralCost", mpc.IntegralCost);
+    grampc_setopt_string(grampc_, "TerminalCost", mpc.TerminalCost);
+
+    grampc_printopt(grampc_);
+    grampc_printparam(grampc_); cout << "\n";
+}
+
+// MPC
+void ControlThread::modelParamSet()
+{
+    model.A = model.A_e + model.A_h[test.human];
+    model.B = model.B_e + model.B_h[test.human];
+    model.J = model.J_e + model.J_h[test.human];
+    model.tau_g = model.tau_g_e + model.tau_g_h[test.human];
+}
+
+
 void ControlThread::control_init() {
+    // MPC
+    if (test.mpc){
+        modelParamSet();
+        mpcInit();
+    }
+
     open_files();
 	GUIComms("Init Complete\n");
 }
@@ -74,6 +121,9 @@ void ControlThread::control_stop() {
         motorThread->control_complete = 1;
 	}
     close_files();
+    if (test.mpc){
+        grampc_free(&grampc_);
+    }
 	GUIComms("Real Duration, ms :" + QString::number(duration, 'f', 0) + "\n");
     if(test.exo)
 		GUIComms("Command Cycles  :" + QString::number(motorThread->motor_comms_count, 'f', 0) + "\n");
@@ -107,7 +157,7 @@ void ControlThread::control_loop() {
 
         if (test.exo) {
 
-            demandedTorque = 0; // Constant torque demand (can be controlled)
+            demandedTorque = controlInput(); // Constant torque demand (can be controlled)
 
 			motorThread->demandedTorque = demandedTorque;
 			motorTorque = motorThread->currentTorque;
@@ -137,6 +187,15 @@ void ControlThread::control_loop() {
 		loopSlept = false;
 		time_counter -= (double)(0.002 * CLOCKS_PER_SEC);
 	}
+}
+
+double ControlThread::controlInput()
+{
+    if (test.mpc) {
+        grampc_run(grampc_);
+        return *grampc_->sol->unext;
+    }
+    return 0.0; // Zero impedance
 }
 
 void ControlThread::open_files() {

@@ -9,12 +9,47 @@ message("You are running qmake on a generated .pro file. This may not work!")
 
 HEADERS += ./GUI.h \
     $$PWD/daq.h \
+    $$PWD/libgrampc/euler1.h \
+    $$PWD/libgrampc/eulermod2.h \
+    $$PWD/libgrampc/f2cmod.h \
+    $$PWD/libgrampc/grampc.h \
+    $$PWD/libgrampc/grampc.hpp \
+    $$PWD/libgrampc/grampc_init.h \
+    $$PWD/libgrampc/grampc_mess.h \
+    $$PWD/libgrampc/grampc_run.h \
+    $$PWD/libgrampc/grampc_setopt.h \
+    $$PWD/libgrampc/grampc_setparam.h \
+    $$PWD/libgrampc/grampc_util.h \
+    $$PWD/libgrampc/heun2.h \
+    $$PWD/libgrampc/libgrampc.h \
+    $$PWD/libgrampc/probfct.h \
+    $$PWD/libgrampc/problem_description.hpp \
+    $$PWD/libgrampc/rodas.h \
+    $$PWD/libgrampc/rodas_decsol_f2c.h \
+    $$PWD/libgrampc/ruku45.h \
+    $$PWD/libgrampc/simpson.h \
+    $$PWD/libgrampc/trapezodial.h \
     $$PWD/tmsicontroller.h \
     ./qcustomplot.h \
     ./motorThread.h \
     ./controlThread.h
 SOURCES += ./GUI.cpp \
     $$PWD/daq.cpp \
+    $$PWD/libgrampc/euler1.c \
+    $$PWD/libgrampc/eulermod2.c \
+    $$PWD/libgrampc/grampc.cpp \
+    $$PWD/libgrampc/grampc_init.c \
+    $$PWD/libgrampc/grampc_mess.c \
+    $$PWD/libgrampc/grampc_run.c \
+    $$PWD/libgrampc/grampc_setopt.c \
+    $$PWD/libgrampc/grampc_setparam.c \
+    $$PWD/libgrampc/grampc_util.c \
+    $$PWD/libgrampc/heun2.c \
+    $$PWD/libgrampc/problem_description.cpp \
+    $$PWD/libgrampc/rodas.c \
+    $$PWD/libgrampc/ruku45.c \
+    $$PWD/libgrampc/simpson.c \
+    $$PWD/libgrampc/trapezodial.c \
     $$PWD/tmsicontroller.cpp \
     ./main.cpp \
     ./motorThread.cpp \
