@@ -16,7 +16,7 @@ CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_UNICODE -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DQT_PRINTSUPPORT_LIB -D_CRT_SECURE_NO_WARNINGS -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -Zi -MDd -W3 -w44456 -w44457 -w44458 /Fddebug\GUI.vc.pdb $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc /Fddebug\GUI.vc.pdb $(DEFINES)
-INCPATH       = -I. -I..\hebicpp\hebi-cpp\hebi\include -I..\hebicpp\hebi-cpp\src -I..\hebicpp\hebi-cpp\Eigen -I..\x-IMU\include -I..\TMSi\include -I..\libgrampc -IGeneratedFiles -I./GeneratedFiles/$(ConfigurationName) -I. -I. -I. -IC:\Qt\5.15.0\msvc2019_64\include -IC:\Qt\5.15.0\msvc2019_64\include\QtPrintSupport -IC:\Qt\5.15.0\msvc2019_64\include\QtWidgets -IC:\Qt\5.15.0\msvc2019_64\include\QtGui -IC:\Qt\5.15.0\msvc2019_64\include\QtANGLE -IC:\Qt\5.15.0\msvc2019_64\include\QtSerialPort -IC:\Qt\5.15.0\msvc2019_64\include\QtCore -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName) -IGeneratedFiles -I/include -IC:\Qt\5.15.0\msvc2019_64\mkspecs\win32-msvc 
+INCPATH       = -I. -I..\hebicpp\hebi-cpp\hebi\include -I..\hebicpp\hebi-cpp\src -I..\hebicpp\hebi-cpp\Eigen -I..\x-IMU\include -I..\TMSi\include -IGeneratedFiles -I./GeneratedFiles/$(ConfigurationName) -I. -I. -I. -IC:\Qt\5.15.0\msvc2019_64\include -IC:\Qt\5.15.0\msvc2019_64\include\QtPrintSupport -IC:\Qt\5.15.0\msvc2019_64\include\QtWidgets -IC:\Qt\5.15.0\msvc2019_64\include\QtGui -IC:\Qt\5.15.0\msvc2019_64\include\QtANGLE -IC:\Qt\5.15.0\msvc2019_64\include\QtSerialPort -IC:\Qt\5.15.0\msvc2019_64\include\QtCore -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName) -IGeneratedFiles -I/include -IC:\Qt\5.15.0\msvc2019_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
 LIBS          = /LIBPATH:C:\Users\prince\Desktop\exo_gui\GUI C:\Users\prince\Desktop\exo_gui\GUI\hebi.lib C:\Users\prince\Desktop\exo_gui\GUI\hebicpp.lib C:\Users\prince\Desktop\exo_gui\GUI\X-IMU-API.lib C:\Qt\5.15.0\msvc2019_64\lib\Qt5PrintSupportd.lib C:\Qt\5.15.0\msvc2019_64\lib\Qt5Widgetsd.lib C:\Qt\5.15.0\msvc2019_64\lib\Qt5Guid.lib C:\Qt\5.15.0\msvc2019_64\lib\Qt5SerialPortd.lib C:\Qt\5.15.0\msvc2019_64\lib\Qt5Cored.lib  C:\Qt\5.15.0\msvc2019_64\lib\qtmaind.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.7.25-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib 
@@ -1069,24 +1069,6 @@ GeneratedFiles\$(ConfigurationName)\moc_GUI.cpp: GUI.h \
 		..\hebicpp\hebi-cpp\src\quaternion_f.hpp \
 		..\hebicpp\hebi-cpp\src\vector_3_f.hpp \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
-		..\libgrampc\libgrampc.h \
-		..\libgrampc\grampc.hpp \
-		..\libgrampc\problem_description.hpp \
-		..\libgrampc\grampc.h \
-		..\libgrampc\grampc_init.h \
-		..\libgrampc\grampc_mess.h \
-		..\libgrampc\grampc_run.h \
-		..\libgrampc\grampc_util.h \
-		..\libgrampc\grampc_setopt.h \
-		..\libgrampc\probfct.h \
-		..\libgrampc\euler1.h \
-		..\libgrampc\eulermod2.h \
-		..\libgrampc\heun2.h \
-		..\libgrampc\rodas.h \
-		..\libgrampc\ruku45.h \
-		..\libgrampc\trapezodial.h \
-		..\libgrampc\simpson.h \
-		..\libgrampc\grampc_setparam.h \
 		tmsicontroller.h \
 		..\TMSi\include\tmsisdk.h \
 		daq.h \
@@ -1095,7 +1077,7 @@ GeneratedFiles\$(ConfigurationName)\moc_GUI.cpp: GUI.h \
 		C:\Qt\5.15.0\msvc2019_64\include\QtCore\QDir \
 		GeneratedFiles\$(ConfigurationName)\moc_predefs.h \
 		C:\Qt\5.15.0\msvc2019_64\bin\moc.exe
-	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/libgrampc -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" GUI.h -o GeneratedFiles\moc_GUI.cpp
+	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" GUI.h -o GeneratedFiles\moc_GUI.cpp
 
 GeneratedFiles\$(ConfigurationName)\moc_qcustomplot.cpp: qcustomplot.h \
 		C:\Qt\5.15.0\msvc2019_64\include\QtCore\QObject \
@@ -1604,7 +1586,7 @@ GeneratedFiles\$(ConfigurationName)\moc_qcustomplot.cpp: qcustomplot.h \
 		C:\Qt\5.15.0\msvc2019_64\include\QtPrintSupport\qtprintsupportversion.h \
 		GeneratedFiles\$(ConfigurationName)\moc_predefs.h \
 		C:\Qt\5.15.0\msvc2019_64\bin\moc.exe
-	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/libgrampc -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" qcustomplot.h -o GeneratedFiles\moc_qcustomplot.cpp
+	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" qcustomplot.h -o GeneratedFiles\moc_qcustomplot.cpp
 
 GeneratedFiles\$(ConfigurationName)\moc_motorThread.cpp: motorThread.h \
 		C:\Qt\5.15.0\msvc2019_64\include\QtCore\QThread \
@@ -1956,7 +1938,7 @@ GeneratedFiles\$(ConfigurationName)\moc_motorThread.cpp: motorThread.h \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
 		GeneratedFiles\$(ConfigurationName)\moc_predefs.h \
 		C:\Qt\5.15.0\msvc2019_64\bin\moc.exe
-	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/libgrampc -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" motorThread.h -o GeneratedFiles\moc_motorThread.cpp
+	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" motorThread.h -o GeneratedFiles\moc_motorThread.cpp
 
 GeneratedFiles\$(ConfigurationName)\moc_controlThread.cpp: controlThread.h \
 		GeneratedFiles\ui_GUI.h \
@@ -2770,24 +2752,6 @@ GeneratedFiles\$(ConfigurationName)\moc_controlThread.cpp: controlThread.h \
 		..\hebicpp\hebi-cpp\src\quaternion_f.hpp \
 		..\hebicpp\hebi-cpp\src\vector_3_f.hpp \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
-		..\libgrampc\libgrampc.h \
-		..\libgrampc\grampc.hpp \
-		..\libgrampc\problem_description.hpp \
-		..\libgrampc\grampc.h \
-		..\libgrampc\grampc_init.h \
-		..\libgrampc\grampc_mess.h \
-		..\libgrampc\grampc_run.h \
-		..\libgrampc\grampc_util.h \
-		..\libgrampc\grampc_setopt.h \
-		..\libgrampc\probfct.h \
-		..\libgrampc\euler1.h \
-		..\libgrampc\eulermod2.h \
-		..\libgrampc\heun2.h \
-		..\libgrampc\rodas.h \
-		..\libgrampc\ruku45.h \
-		..\libgrampc\trapezodial.h \
-		..\libgrampc\simpson.h \
-		..\libgrampc\grampc_setparam.h \
 		tmsicontroller.h \
 		..\TMSi\include\tmsisdk.h \
 		daq.h \
@@ -2796,7 +2760,7 @@ GeneratedFiles\$(ConfigurationName)\moc_controlThread.cpp: controlThread.h \
 		C:\Qt\5.15.0\msvc2019_64\include\QtCore\QDir \
 		GeneratedFiles\$(ConfigurationName)\moc_predefs.h \
 		C:\Qt\5.15.0\msvc2019_64\bin\moc.exe
-	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/libgrampc -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" controlThread.h -o GeneratedFiles\moc_controlThread.cpp
+	C:\Qt\5.15.0\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)/moc_predefs.h" -IC:/Qt/5.15.0/msvc2019_64/mkspecs/win32-msvc -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/hebi/include -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/src -IC:/Users/prince/Desktop/exo_gui/hebicpp/hebi-cpp/Eigen -IC:/Users/prince/Desktop/exo_gui/x-IMU/include -IC:/Users/prince/Desktop/exo_gui/TMSi/include -IC:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles -I"C:/Users/prince/Desktop/exo_gui/GUI/GeneratedFiles/$(ConfigurationName)" -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Users/prince/Desktop/exo_gui/GUI -IC:/Qt/5.15.0/msvc2019_64/include -IC:/Qt/5.15.0/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.0/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.0/msvc2019_64/include/QtGui -IC:/Qt/5.15.0/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.0/msvc2019_64/include/QtSerialPort -IC:/Qt/5.15.0/msvc2019_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" controlThread.h -o GeneratedFiles\moc_controlThread.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -4166,24 +4130,6 @@ debug\GUI.obj: GUI.cpp GUI.h \
 		..\hebicpp\hebi-cpp\src\quaternion_f.hpp \
 		..\hebicpp\hebi-cpp\src\vector_3_f.hpp \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
-		..\libgrampc\libgrampc.h \
-		..\libgrampc\grampc.hpp \
-		..\libgrampc\problem_description.hpp \
-		..\libgrampc\grampc.h \
-		..\libgrampc\grampc_init.h \
-		..\libgrampc\grampc_mess.h \
-		..\libgrampc\grampc_run.h \
-		..\libgrampc\grampc_util.h \
-		..\libgrampc\grampc_setopt.h \
-		..\libgrampc\probfct.h \
-		..\libgrampc\euler1.h \
-		..\libgrampc\eulermod2.h \
-		..\libgrampc\heun2.h \
-		..\libgrampc\rodas.h \
-		..\libgrampc\ruku45.h \
-		..\libgrampc\trapezodial.h \
-		..\libgrampc\simpson.h \
-		..\libgrampc\grampc_setparam.h \
 		tmsicontroller.h \
 		..\TMSi\include\tmsisdk.h \
 		daq.h \
@@ -5113,24 +5059,6 @@ debug\main.obj: main.cpp GUI.h \
 		..\hebicpp\hebi-cpp\src\quaternion_f.hpp \
 		..\hebicpp\hebi-cpp\src\vector_3_f.hpp \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
-		..\libgrampc\libgrampc.h \
-		..\libgrampc\grampc.hpp \
-		..\libgrampc\problem_description.hpp \
-		..\libgrampc\grampc.h \
-		..\libgrampc\grampc_init.h \
-		..\libgrampc\grampc_mess.h \
-		..\libgrampc\grampc_run.h \
-		..\libgrampc\grampc_util.h \
-		..\libgrampc\grampc_setopt.h \
-		..\libgrampc\probfct.h \
-		..\libgrampc\euler1.h \
-		..\libgrampc\eulermod2.h \
-		..\libgrampc\heun2.h \
-		..\libgrampc\rodas.h \
-		..\libgrampc\ruku45.h \
-		..\libgrampc\trapezodial.h \
-		..\libgrampc\simpson.h \
-		..\libgrampc\grampc_setparam.h \
 		tmsicontroller.h \
 		..\TMSi\include\tmsisdk.h \
 		daq.h \
@@ -6299,24 +6227,6 @@ debug\controlThread.obj: controlThread.cpp controlThread.h \
 		..\hebicpp\hebi-cpp\src\quaternion_f.hpp \
 		..\hebicpp\hebi-cpp\src\vector_3_f.hpp \
 		..\hebicpp\hebi-cpp\src\log_file.hpp \
-		..\libgrampc\libgrampc.h \
-		..\libgrampc\grampc.hpp \
-		..\libgrampc\problem_description.hpp \
-		..\libgrampc\grampc.h \
-		..\libgrampc\grampc_init.h \
-		..\libgrampc\grampc_mess.h \
-		..\libgrampc\grampc_run.h \
-		..\libgrampc\grampc_util.h \
-		..\libgrampc\grampc_setopt.h \
-		..\libgrampc\probfct.h \
-		..\libgrampc\euler1.h \
-		..\libgrampc\eulermod2.h \
-		..\libgrampc\heun2.h \
-		..\libgrampc\rodas.h \
-		..\libgrampc\ruku45.h \
-		..\libgrampc\trapezodial.h \
-		..\libgrampc\simpson.h \
-		..\libgrampc\grampc_setparam.h \
 		tmsicontroller.h \
 		..\TMSi\include\tmsisdk.h \
 		daq.h \

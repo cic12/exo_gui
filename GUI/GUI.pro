@@ -13,7 +13,6 @@ INCLUDEPATH += ./../hebicpp/hebi-cpp/hebi/include \
     ./../hebicpp/hebi-cpp/Eigen \
     ./../x-IMU/include \
     ./../TMSi/include \
-    ./../libgrampc \
     ./GeneratedFiles \
     ./GeneratedFiles/$(ConfigurationName)
 DEPENDPATH += .

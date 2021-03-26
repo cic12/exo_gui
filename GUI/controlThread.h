@@ -2,7 +2,6 @@
 
 #include "ui_GUI.h"
 #include "motorThread.h"
-#include "libgrampc.h"
 #include "tmsicontroller.h"
 
 using namespace std;
