@@ -61,8 +61,8 @@ void GUI::on_btn_reset_clicked()
 {
 	if (gui_done && !gui_reset) {
 		controlThread = new ControlThread(this);
-        ui.checkBox->setChecked(controlThread->test.exo);
-        ui.checkBox_2->setChecked(controlThread->test.emg);
+        controlThread->test.exo = ui.checkBox->checkState();
+        controlThread->test.emg = ui.checkBox_2->checkState();
 		clearPlots();
 		plot();
 		ui.plainTextEdit->clear();

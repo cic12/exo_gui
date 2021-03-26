@@ -10,7 +10,7 @@ TMSiController::TMSiController()
 	bool connected = connect();
 	bool getFormat = getSignalFormatCall();
 	int* signaltypes = queryPortTypes();
-	setSampleRate(MAX_SAMPLE_RATE);
+    setSampleRate(MAX_SAMPLE_RATE);
 	ULONG sampleRate = getSampleRate();
 }
 
@@ -162,7 +162,7 @@ void TMSiController::streamProcess()
 	safeStart = false;
 	while (streaming.load())
 	{
-		std::this_thread::sleep_for(std::chrono::nanoseconds(200));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(200));
 		int ReturnedBytes = getSamples(Handle, (PULONG)SignalBuffer, 2176);
 		if (ReturnedBytes < 0) {
 			ErrorCount++;
@@ -220,8 +220,6 @@ void TMSiController::streamProcess()
 				}
 				timeStampsC.push_back(currentReadTime.load());
 
-                // REDUCE AMOUNT OF WORK IN THIS THREAD
-
 				m_mutex.lock();
 				daq->aivec[0] = (double)currentSample[16] / 1000;
 				daq->aivec[1] = (double)currentSample[17] / 1000;
@@ -235,11 +233,8 @@ void TMSiController::streamProcess()
 
 				daq->daq_aiFile << daq->aivec[0] << "," << daq->aivec[1] << "," << daq->aivec[2] << "," << daq->aivec[3] << "\n";
 				m_mutex.unlock();
-
-                std::this_thread::sleep_for(std::chrono::microseconds(500));
 			}
 		}
-        std::this_thread::sleep_for(std::chrono::nanoseconds(200));
 	}
 
 	safeStart = true;
