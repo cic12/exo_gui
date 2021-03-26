@@ -12,6 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -45,6 +48,22 @@ public:
     QLabel *label_24;
     QCheckBox *checkBox;
     QCheckBox *checkBox_2;
+    QGroupBox *groupBoxBaudrates;
+    QGridLayout *gridLayout;
+    QLabel *label;
+    QComboBox *comboBoxBaudRates;
+    QComboBox *comboBoxPortNames;
+    QLabel *label_12;
+    QPushButton *pushButtonOnOff;
+    QPlainTextEdit *textArea;
+    QPlainTextEdit *textArea_2;
+    QGroupBox *groupBoxBaudrates_2;
+    QGridLayout *gridLayout_2;
+    QPushButton *pushButtonOnOff_2;
+    QLabel *label_14;
+    QLabel *label_13;
+    QComboBox *comboBoxBaudRates_2;
+    QComboBox *comboBoxPortNames_2;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
@@ -53,7 +72,7 @@ public:
     {
         if (GUIClass->objectName().isEmpty())
             GUIClass->setObjectName(QString::fromUtf8("GUIClass"));
-        GUIClass->resize(702, 607);
+        GUIClass->resize(951, 607);
         GUIClass->setFocusPolicy(Qt::NoFocus);
         centralWidget = new QWidget(GUIClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
@@ -110,6 +129,78 @@ public:
         checkBox_2 = new QCheckBox(centralWidget);
         checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
         checkBox_2->setGeometry(QRect(110, 110, 70, 17));
+        groupBoxBaudrates = new QGroupBox(centralWidget);
+        groupBoxBaudrates->setObjectName(QString::fromUtf8("groupBoxBaudrates"));
+        groupBoxBaudrates->setGeometry(QRect(700, 10, 241, 81));
+        gridLayout = new QGridLayout(groupBoxBaudrates);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label = new QLabel(groupBoxBaudrates);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
+        comboBoxBaudRates = new QComboBox(groupBoxBaudrates);
+        comboBoxBaudRates->setObjectName(QString::fromUtf8("comboBoxBaudRates"));
+
+        gridLayout->addWidget(comboBoxBaudRates, 1, 1, 1, 1);
+
+        comboBoxPortNames = new QComboBox(groupBoxBaudrates);
+        comboBoxPortNames->setObjectName(QString::fromUtf8("comboBoxPortNames"));
+
+        gridLayout->addWidget(comboBoxPortNames, 1, 0, 1, 1);
+
+        label_12 = new QLabel(groupBoxBaudrates);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        gridLayout->addWidget(label_12, 0, 1, 1, 1);
+
+        pushButtonOnOff = new QPushButton(groupBoxBaudrates);
+        pushButtonOnOff->setObjectName(QString::fromUtf8("pushButtonOnOff"));
+        pushButtonOnOff->setCheckable(false);
+
+        gridLayout->addWidget(pushButtonOnOff, 1, 2, 1, 1);
+
+        textArea = new QPlainTextEdit(centralWidget);
+        textArea->setObjectName(QString::fromUtf8("textArea"));
+        textArea->setGeometry(QRect(700, 100, 241, 171));
+        textArea_2 = new QPlainTextEdit(centralWidget);
+        textArea_2->setObjectName(QString::fromUtf8("textArea_2"));
+        textArea_2->setGeometry(QRect(700, 380, 241, 171));
+        groupBoxBaudrates_2 = new QGroupBox(centralWidget);
+        groupBoxBaudrates_2->setObjectName(QString::fromUtf8("groupBoxBaudrates_2"));
+        groupBoxBaudrates_2->setGeometry(QRect(700, 290, 241, 81));
+        gridLayout_2 = new QGridLayout(groupBoxBaudrates_2);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        pushButtonOnOff_2 = new QPushButton(groupBoxBaudrates_2);
+        pushButtonOnOff_2->setObjectName(QString::fromUtf8("pushButtonOnOff_2"));
+        pushButtonOnOff_2->setCheckable(false);
+
+        gridLayout_2->addWidget(pushButtonOnOff_2, 1, 2, 1, 1);
+
+        label_14 = new QLabel(groupBoxBaudrates_2);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+
+        gridLayout_2->addWidget(label_14, 0, 0, 1, 1);
+
+        label_13 = new QLabel(groupBoxBaudrates_2);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+
+        gridLayout_2->addWidget(label_13, 0, 1, 1, 1);
+
+        comboBoxBaudRates_2 = new QComboBox(groupBoxBaudrates_2);
+        comboBoxBaudRates_2->setObjectName(QString::fromUtf8("comboBoxBaudRates_2"));
+
+        gridLayout_2->addWidget(comboBoxBaudRates_2, 1, 1, 1, 1);
+
+        comboBoxPortNames_2 = new QComboBox(groupBoxBaudrates_2);
+        comboBoxPortNames_2->setObjectName(QString::fromUtf8("comboBoxPortNames_2"));
+
+        gridLayout_2->addWidget(comboBoxPortNames_2, 1, 0, 1, 1);
+
         GUIClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(GUIClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -119,8 +210,14 @@ public:
         GUIClass->setStatusBar(statusBar);
         menuBar = new QMenuBar(GUIClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 702, 21));
+        menuBar->setGeometry(QRect(0, 0, 951, 21));
         GUIClass->setMenuBar(menuBar);
+#if QT_CONFIG(shortcut)
+        label->setBuddy(comboBoxPortNames);
+        label_12->setBuddy(comboBoxBaudRates);
+        label_14->setBuddy(comboBoxPortNames);
+        label_13->setBuddy(comboBoxBaudRates);
+#endif // QT_CONFIG(shortcut)
 
         retranslateUi(GUIClass);
         QObject::connect(btn_start, SIGNAL(clicked()), GUIClass, SLOT(on_btn_start_clicked()));
@@ -146,6 +243,14 @@ public:
         label_24->setText(QCoreApplication::translate("GUIClass", "EMG", nullptr));
         checkBox->setText(QCoreApplication::translate("GUIClass", "Exo", nullptr));
         checkBox_2->setText(QCoreApplication::translate("GUIClass", "EMG", nullptr));
+        groupBoxBaudrates->setTitle(QCoreApplication::translate("GUIClass", "X-IMU", nullptr));
+        label->setText(QCoreApplication::translate("GUIClass", "&Com:", nullptr));
+        label_12->setText(QCoreApplication::translate("GUIClass", "&Baudrate:", nullptr));
+        pushButtonOnOff->setText(QCoreApplication::translate("GUIClass", "open", nullptr));
+        groupBoxBaudrates_2->setTitle(QCoreApplication::translate("GUIClass", "Nano", nullptr));
+        pushButtonOnOff_2->setText(QCoreApplication::translate("GUIClass", "open", nullptr));
+        label_14->setText(QCoreApplication::translate("GUIClass", "&Com:", nullptr));
+        label_13->setText(QCoreApplication::translate("GUIClass", "&Baudrate:", nullptr));
     } // retranslateUi
 
 };

@@ -2,6 +2,7 @@
 
 #include "ui_GUI.h"
 #include "motorThread.h"
+#include "libgrampc.h"
 #include "tmsicontroller.h"
 
 using namespace std;
@@ -32,6 +33,9 @@ public:
 	bool Stop = false;
     bool control_initialised = false;
     int i_control = 0;
+
+    double imu_quat[4] = {};
+    double nano[4] = {};
 	float voltage = 0;
 
 	plotVars vars;
@@ -61,10 +65,12 @@ private:
 
     double evec[4] = {};
 
-    FILE *file_x, *file_xdes,
+    FILE *file_t, *file_emg,
+        *file_x, *file_xdes,
         *file_u, *file_udes,
-        *file_t, *file_emg,
-        *file_hebi_quat;
+        *file_hebi_quat,
+        *file_imu_quat,
+        *file_nano;
 
 	void open_files();
 	void print2Files();

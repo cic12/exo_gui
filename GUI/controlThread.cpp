@@ -142,33 +142,39 @@ void ControlThread::control_loop() {
 void ControlThread::open_files() {
     errno_t err;
     err = fopen_s(&file_t, "../../results/tvec.txt", "w");
+    err = fopen_s(&file_emg, "../../results/emg.txt", "w");
     err = fopen_s(&file_x, "../../results/xvec.txt", "w");
     err = fopen_s(&file_xdes, "../../results/xdesvec.txt", "w");
     err = fopen_s(&file_u, "../../results/uvec.txt", "w");
     err = fopen_s(&file_udes, "../../results/udes.txt", "w");
     err = fopen_s(&file_hebi_quat, "../../results/hebi_quat.txt", "w");
-    err = fopen_s(&file_emg, "../../results/emg.txt", "w");
+    err = fopen_s(&file_imu_quat, "../../results/imu_quat.txt", "w");
+    err = fopen_s(&file_nano, "../../results/nano.txt", "w");
 }
 
 void ControlThread::print2Files() {
     printNumVector2File(file_t, &t, 1);
+    printNumVector2File(file_emg, evec, 4);
     printNumVector2File(file_x, &currentPosition, 1);
     printNumVector2File(file_xdes, &referencePosition, 1);
     printNumVector2File(file_u, &motorTorque, 1);
     printNumVector2File(file_udes, &demandedTorque, 1);
     printNumVector2File(file_hebi_quat, hebi_quat, 4);
-    printNumVector2File(file_emg, evec, 4);
+    printNumVector2File(file_imu_quat, imu_quat, 4);
+    printNumVector2File(file_nano, nano, 4);
 }
 
 void ControlThread::close_files()
 {
     fclose(file_t);
+    fclose(file_emg);
     fclose(file_x);
     fclose(file_xdes);
     fclose(file_u);
     fclose(file_udes);
     fclose(file_hebi_quat);
-    fclose(file_emg);
+    fclose(file_imu_quat);
+    fclose(file_nano);
 }
 
 void printNumVector2File(FILE *file, const double * val, const int size) {
